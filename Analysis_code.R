@@ -109,3 +109,11 @@ iadq_gad7 <- lmrob(gad7 ~ po + fta, data = IADQ)
 summary(iadq_gad7)
 iadq_multi <- manova(cbind(phq9, gad7) ~ po + fta, data = IADQ)
 Anova(iadq_multi, type = "III", robust = TRUE)
+
+#Extrinsic concurrent validity: Preoccupation + Failure to adapt ---> PHQ-9, GAD-7
+total_phq9 <- lmrob(phq9 ~ total, data = IADQ)
+summary(total_phq9)
+total_gad7 <- lmrob(gad7 ~ total, data = IADQ)
+summary(total_gad7)
+total_multi <- manova(cbind(phq9, gad7) ~ total, data = IADQ)
+Anova(total_multi, type = "III", robust = TRUE)
