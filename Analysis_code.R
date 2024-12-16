@@ -72,6 +72,16 @@ endo_mod4 <- 'f1e =~ ajd10e + ajd11e + ajd12e
 endo_mod4_fit <- cfa(endo_mod4, data=IADQ, estimator = "WLSMV", ordered = c("ajd10e", "ajd11e", "ajd12e", "ajd13e", "ajd14e", "ajd15e"))
 summary(endo_mod4_fit, standardized = TRUE, fit.measures = TRUE)
 
+#Perform the chi-square DiffTest to assess the relative fitness:
+
+#Relative fitness between the 2-factor solutions and the 1-factor solution
+anova(endo_mod1_fit, endo_mod2_fit)
+anova(endo_mod1_fit, endo_mod3_fit)
+anova(endo_mod1_fit, endo_mod4_fit)
+
+#Relative fitness between the overlapped 2-factor solutions and the original 2-factor solution
+anova(endo_mod2_fit, endo_mod4_fit)
+
 
 #Calculate composite reliability for preoccupation and failure to adapt in model 2
 comp_rel <- compRelSEM(cont_mod2_fit)
